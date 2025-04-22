@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("com.google.devtools.ksp")
+    //kotlin("kapt")
 }
 
 android {
@@ -35,7 +36,7 @@ android {
         jvmTarget = "11"
     }
 
-    viewBinding { enable = true }
+    dataBinding { enable = true }
 }
 
 val androidxCoreVersion = "1.12.0"
@@ -79,6 +80,10 @@ dependencies {
     implementation("androidx.room:room-runtime:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
 
+    //ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
+    //LiveData
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
