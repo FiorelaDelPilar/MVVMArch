@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.mvvmarch.HomeFragment"
+        android:name="com.example.mvvmarch.homeModule.HomeFragment"
         android:label="@string/home_title"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_favourite"
-        android:name="com.example.mvvmarch.FavouriteFragment"
+        android:name="com.example.mvvmarch.favouriteModule.FavouriteFragment"
         android:label="@string/favourite_title"
         tools:layout="@layout/fragment_home"/>
 
     <fragment
         android:id="@+id/navigation_promo"
-        android:name="com.example.mvvmarch.PromoFragment"
+        android:name="com.example.mvvmarch.promoModule.PromoFragment"
         android:label="@string/promo_title"
         tools:layout="@layout/fragment_promo" />
 
     <fragment
         android:id="@+id/navigation_account"
-        android:name="com.example.mvvmarch.AccountFragment"
+        android:name="com.example.mvvmarch.accountModule.AccountFragment"
         android:label="@string/account_title"
         tools:layout="@layout/fragment_account" />
 </navigation>

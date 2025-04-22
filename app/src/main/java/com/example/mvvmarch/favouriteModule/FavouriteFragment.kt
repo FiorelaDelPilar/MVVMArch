@@ -1,9 +1,16 @@
-package com.example.mvvmarch
+package com.example.mvvmarch.favouriteModule
 
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mvvmarch.R
+import com.example.mvvmarch.updateModule.UpdateDialogFragment
+import com.example.mvvmarch.WineApplication
+import com.example.mvvmarch.common.utils.Constants
+import com.example.mvvmarch.common.utils.OnClickListener
+import com.example.mvvmarch.common.entities.Wine
+import com.example.mvvmarch.common.view.WineBaseFragment
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

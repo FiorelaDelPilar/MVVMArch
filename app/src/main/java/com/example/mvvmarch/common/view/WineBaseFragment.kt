@@ -1,4 +1,4 @@
-package com.example.mvvmarch
+package com.example.mvvmarch.common.view
 
 import android.os.Bundle
 import android.view.LayoutInflater

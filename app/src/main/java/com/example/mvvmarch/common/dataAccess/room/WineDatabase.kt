@@ -1,7 +1,9 @@
-package com.example.mvvmarch
+package com.example.mvvmarch.common.dataAccess.room
 
-import androidx.room.TypeConverter
-import com.google.gson.Gson
+import androidx.room.Database
+import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.example.mvvmarch.common.entities.Wine
 
 /****
  * Project: Wines
@@ -17,14 +19,8 @@ import com.google.gson.Gson
  * Coupons on my Website:
  * www.alainnicolastello.com
  ***/
-class WineConverters {
-    @TypeConverter
-    fun fromJsonStr(value: String?): Rating? {
-        return value?.let { Gson().fromJson(it, Rating::class.java) }
-    }
-
-    @TypeConverter
-    fun fromRating(value: Rating?): String? {
-        return value?.let { Gson().toJson(it) }
-    }
+@Database(entities = [Wine::class], version = 1)
+@TypeConverters(WineConverters::class)
+abstract class WineDatabase : RoomDatabase(){
+    abstract fun wineDao(): WineDao
 }

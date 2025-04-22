@@ -1,11 +1,12 @@
-package com.example.mvvmarch
+package com.example.mvvmarch.mainModule
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.mvvmarch.LoginFragment
+import com.example.mvvmarch.R
+import com.example.mvvmarch.loginModule.LoginFragment
 import com.example.mvvmarch.databinding.ActivityMainBinding
 
 /****

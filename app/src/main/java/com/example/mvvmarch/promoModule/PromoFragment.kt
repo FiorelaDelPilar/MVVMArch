@@ -1,4 +1,4 @@
-package com.example.mvvmarch
+package com.example.mvvmarch.promoModule
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mvvmarch.common.dataAccess.local.getAllPromos
 import com.example.mvvmarch.databinding.FragmentPromoBinding
 
 /****

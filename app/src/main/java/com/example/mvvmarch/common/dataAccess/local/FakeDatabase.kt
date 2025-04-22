@@ -1,4 +1,6 @@
-package com.example.mvvmarch
+package com.example.mvvmarch.common.dataAccess.local
+
+import com.example.mvvmarch.common.entities.Promo
 
 /****
  * Project: Wines

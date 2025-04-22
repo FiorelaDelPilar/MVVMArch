@@ -2,6 +2,7 @@ package com.example.mvvmarch
 
 import android.app.Application
 import androidx.room.Room
+import com.example.mvvmarch.common.dataAccess.room.WineDatabase
 
 /****
  * Project: Wines

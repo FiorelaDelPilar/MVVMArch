@@ -1,4 +1,8 @@
-package com.example.mvvmarch
+package com.example.mvvmarch.common.dataAccess.retrofit
+
+import com.example.mvvmarch.common.utils.Constants
+import com.example.mvvmarch.common.entities.Wine
+import retrofit2.http.GET
 
 /****
  * Project: Wines
@@ -14,6 +18,8 @@ package com.example.mvvmarch
  * Coupons on my Website:
  * www.alainnicolastello.com
  ***/
-data class Promo(val id: Long,
-                 val description: String,
-                 val url: String)
+interface WineService {
+    // https://sampleapis.com/api-list/wines
+    @GET(Constants.PATH_WINES)
+    suspend fun getRedWines() : List<Wine>
+}

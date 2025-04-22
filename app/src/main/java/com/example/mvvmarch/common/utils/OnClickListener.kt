@@ -1,8 +1,6 @@
-package com.example.mvvmarch
+package com.example.mvvmarch.common.utils
 
-import androidx.room.Database
-import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
+import com.example.mvvmarch.common.entities.Wine
 
 /****
  * Project: Wines
@@ -18,8 +16,7 @@ import androidx.room.TypeConverters
  * Coupons on my Website:
  * www.alainnicolastello.com
  ***/
-@Database(entities = [Wine::class], version = 1)
-@TypeConverters(WineConverters::class)
-abstract class WineDatabase : RoomDatabase(){
-    abstract fun wineDao(): WineDao
+interface OnClickListener {
+    fun onFavorite(wine: Wine)
+    fun onLongClick(wine: Wine)
 }

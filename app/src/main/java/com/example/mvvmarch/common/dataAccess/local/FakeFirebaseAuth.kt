@@ -1,6 +1,7 @@
-package com.example.mvvmarch
+package com.example.mvvmarch.common.dataAccess.local
 
 import android.net.Uri
+import com.example.mvvmarch.common.entities.FirebaseUser
 import kotlinx.coroutines.delay
 import kotlin.random.Random
 

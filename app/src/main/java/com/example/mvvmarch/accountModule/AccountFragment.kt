@@ -1,4 +1,4 @@
-package com.example.mvvmarch
+package com.example.mvvmarch.accountModule
 
 import android.content.Intent
 import android.net.Uri
@@ -12,6 +12,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.example.mvvmarch.common.utils.Constants
+import com.example.mvvmarch.common.dataAccess.local.FakeFirebaseAuth
+import com.example.mvvmarch.mainModule.MainActivity
+import com.example.mvvmarch.R
 import com.example.mvvmarch.databinding.FragmentAccountBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch

@@ -1,7 +1,8 @@
-package com.example.mvvmarch
+package com.example.mvvmarch.favouriteModule
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mvvmarch.homeModule.WineListAdapter
 
 /****
  * Project: Wines

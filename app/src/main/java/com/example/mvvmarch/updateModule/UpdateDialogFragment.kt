@@ -1,4 +1,4 @@
-package com.example.mvvmarch
+package com.example.mvvmarch.updateModule
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -11,6 +11,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
+import com.example.mvvmarch.R
+import com.example.mvvmarch.WineApplication
+import com.example.mvvmarch.common.utils.Constants
+import com.example.mvvmarch.common.entities.Wine
 import com.example.mvvmarch.databinding.FragmentDialogUpdateBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers

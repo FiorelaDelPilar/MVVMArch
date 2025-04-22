@@ -1,10 +1,17 @@
-package com.example.mvvmarch
+package com.example.mvvmarch.homeModule
 
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.mvvmarch.R
+import com.example.mvvmarch.WineApplication
+import com.example.mvvmarch.common.utils.Constants
+import com.example.mvvmarch.common.utils.OnClickListener
+import com.example.mvvmarch.common.entities.Wine
+import com.example.mvvmarch.common.view.WineBaseFragment
+import com.example.mvvmarch.common.dataAccess.retrofit.WineService
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers

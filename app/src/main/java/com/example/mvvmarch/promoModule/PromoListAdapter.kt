@@ -1,4 +1,4 @@
-package com.example.mvvmarch
+package com.example.mvvmarch.promoModule
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.example.mvvmarch.R
+import com.example.mvvmarch.common.entities.Promo
 import com.example.mvvmarch.databinding.ItemPromoBinding
 
 /****

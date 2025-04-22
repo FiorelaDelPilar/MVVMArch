@@ -1,13 +1,14 @@
-package com.example.mvvmarch
+package com.example.mvvmarch.loginModule
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import com.example.mvvmarch.MainActivity
+import com.example.mvvmarch.mainModule.MainActivity
+import com.example.mvvmarch.R
+import com.example.mvvmarch.common.dataAccess.local.FakeFirebaseAuth
 import com.example.mvvmarch.databinding.FragmentLoginBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.delay

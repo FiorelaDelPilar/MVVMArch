@@ -1,10 +1,11 @@
-package com.example.mvvmarch
+package com.example.mvvmarch.common.dataAccess.room
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import com.example.mvvmarch.common.entities.Wine
 
 /****
  * Project: Wines
