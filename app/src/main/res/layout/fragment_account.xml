@@ -36,11 +36,12 @@
 
                     <ImageView
                         android:id="@+id/imgProfile"
+                        glideUrl="@{viewModel.user.photoUrl == null ? ``: viewModel.user.photoUrl.toString()}"
                         android:layout_width="@dimen/profile_image_size_large"
                         android:layout_height="@dimen/profile_image_size_large"
                         android:contentDescription="@string/app_name"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/ic_wine_bar" />
+                        tools:src="@drawable/ic_wine_bar" />
                 </androidx.cardview.widget.CardView>
 
                 <TextView
@@ -53,8 +54,8 @@
                     android:id="@+id/tvName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?attr/textAppearanceBodyLarge"
                     android:text="@{viewModel.user.displayName}"
+                    android:textAppearance="?attr/textAppearanceBodyLarge"
                     tools:text="Cursos Android ANT" />
 
                 <TextView
@@ -69,6 +70,7 @@
                     android:layout_height="wrap_content"
                     android:autoLink="email"
                     android:linksClickable="false"
+                    android:text="@{viewModel.user.email}"
                     android:textAppearance="?attr/textAppearanceBodyLarge"
                     tools:text="cursosandroidant@gmail.com" />
 
@@ -76,7 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/common_space_default"
-                    android:text="@string/hint_phone" />
+                    android:text="@{viewModel.user.phone}" />
 
                 <TextView
                     android:id="@+id/tvPhone"
