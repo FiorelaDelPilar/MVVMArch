@@ -1,7 +1,6 @@
 package com.example.mvvmarch.accountModule
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,9 +9,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.mvvmarch.common.utils.Constants
 import com.example.mvvmarch.common.dataAccess.local.FakeFirebaseAuth
 import com.example.mvvmarch.mainModule.MainActivity
@@ -22,8 +18,8 @@ import com.example.mvvmarch.accountModule.viewModel.AccountViewModel
 import com.example.mvvmarch.accountModule.viewModel.AccountViewModelFactory
 import com.example.mvvmarch.databinding.FragmentAccountBinding
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.launch
 import com.example.mvvmarch.BR
+import androidx.core.net.toUri
 
 /****
  * Project: Wines
@@ -58,8 +54,6 @@ class AccountFragment : Fragment() {
         setupViewModel()
         setupIntents()
         setupObservers()
-        /*setupUserUI()
-        setupButtons()      */
     }
 
     private fun setupViewModel() {
@@ -90,32 +84,10 @@ class AccountFragment : Fragment() {
         }
     }
 
-    private fun setupUserUI() {
-        val auth = FakeFirebaseAuth()
-        lifecycleScope.launch {
-            showProgress(true)
-            auth.getCurrentUser()?.let { user ->
-                with(binding) {
-                    tvName.text = user.displayName
-                    tvEmail.text = user.email
-                    tvPhone.text = user.phone
-
-                    Glide.with(requireContext())
-                        .load(user.photoUrl)
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .centerCrop()
-                        .into(imgProfile)
-                }
-                //setupIntents()
-            }
-            showProgress(false)
-        }
-    }
-
     private fun setupIntents() {
         binding.tvEmail.setOnClickListener {
             val intent = Intent(Intent.ACTION_SENDTO).apply {
-                data = Uri.parse(Constants.DATA_MAIL_TO)
+                data = Constants.DATA_MAIL_TO.toUri()
                 putExtra(Intent.EXTRA_EMAIL, arrayOf(binding.tvEmail.text.toString()))
                 putExtra(Intent.EXTRA_SUBJECT, "From kotlin architectures course")
             }
@@ -125,7 +97,7 @@ class AccountFragment : Fragment() {
         binding.tvPhone.setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL).apply {
                 val phone = (it as TextView).text
-                data = Uri.parse("${Constants.DATA_TEL}$phone")
+                data = "${Constants.DATA_TEL}$phone".toUri()
             }
             launchIntent(intent)
         }
@@ -140,25 +112,6 @@ class AccountFragment : Fragment() {
                 getString(R.string.account_error_no_resolve),
                 Toast.LENGTH_SHORT
             ).show()
-        }
-    }
-
-    private fun setupButtons() {
-        binding.btnSignOut.setOnClickListener {
-            lifecycleScope.launch {
-                showProgress(true)
-                val auth = FakeFirebaseAuth()
-                if (auth.signOut()) {
-                    (requireActivity() as MainActivity).apply {
-                        setupNavView(false)
-                        launchLoginUI()
-                    }
-                    showProgress(false)
-                } else {
-                    showProgress(false)
-                    showMsg(R.string.account_sign_out_fail)
-                }
-            }
         }
     }
 

@@ -1,5 +1,6 @@
 package com.example.mvvmarch.common.bindingAdapters
 
+import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -14,4 +15,9 @@ fun bindLoadImage(view: ImageView, url: String) {
         .centerCrop()
         .error(R.drawable.ic_broken_image_24)
         .into(view)
+}
+
+@BindingAdapter("setVisibility")
+fun bindSetVisibility(view: View, isVisible: Boolean) {
+    view.visibility = if (isVisible) View.VISIBLE else View.GONE
 }
