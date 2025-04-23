@@ -1,4 +1,4 @@
-package com.example.mvvmarch.accountModule
+package com.example.mvvmarch.accountModule.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -117,10 +117,6 @@ class AccountFragment : Fragment() {
 
     private fun showMsg(msgRes: Int) {
         Snackbar.make(binding.root, msgRes, Snackbar.LENGTH_SHORT).show()
-    }
-
-    private fun showProgress(isVisible: Boolean) {
-        binding.contentProgress.root.visibility = if (isVisible) View.VISIBLE else View.GONE
     }
 
     override fun onDestroyView() {
