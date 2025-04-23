@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -16,9 +17,13 @@ import com.example.mvvmarch.common.utils.Constants
 import com.example.mvvmarch.common.dataAccess.local.FakeFirebaseAuth
 import com.example.mvvmarch.mainModule.MainActivity
 import com.example.mvvmarch.R
+import com.example.mvvmarch.accountModule.model.AccountRepository
+import com.example.mvvmarch.accountModule.viewModel.AccountViewModel
+import com.example.mvvmarch.accountModule.viewModel.AccountViewModelFactory
 import com.example.mvvmarch.databinding.FragmentAccountBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
+import com.example.mvvmarch.BR
 
 /****
  * Project: Wines
@@ -38,17 +43,51 @@ class AccountFragment : Fragment() {
 
     private var _binding: FragmentAccountBinding? = null
     private val binding get() = _binding!!
+    private lateinit var vm: AccountViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentAccountBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupUserUI()
-        setupButtons()
+        setupViewModel()
+        setupIntents()
+        setupObservers()
+        /*setupUserUI()
+        setupButtons()      */
+    }
+
+    private fun setupViewModel() {
+        vm =
+            ViewModelProvider(
+                this,
+                AccountViewModelFactory(AccountRepository(FakeFirebaseAuth()))
+            )[AccountViewModel::class.java]
+
+        binding.lifecycleOwner = this
+        binding.setVariable(BR.viewModel, vm)
+    }
+
+    private fun setupObservers() {
+        binding.viewModel?.let { vm ->
+            vm.snackbarMsg.observe(viewLifecycleOwner) { resMsg ->
+                showMsg(resMsg)
+            }
+
+            vm.isSignOut.observe(viewLifecycleOwner) { isSignOut ->
+                if (isSignOut) {
+                    (requireActivity() as MainActivity).apply {
+                        setupNavView(false)
+                        launchLoginUI()
+                    }
+                }
+            }
+        }
     }
 
     private fun setupUserUI() {
@@ -67,7 +106,7 @@ class AccountFragment : Fragment() {
                         .centerCrop()
                         .into(imgProfile)
                 }
-                setupIntents()
+                //setupIntents()
             }
             showProgress(false)
         }
@@ -92,11 +131,15 @@ class AccountFragment : Fragment() {
         }
     }
 
-    private fun launchIntent(intent: Intent){
+    private fun launchIntent(intent: Intent) {
         if (intent.resolveActivity(requireActivity().packageManager) != null) {
             startActivity(intent)
         } else {
-            Toast.makeText(requireActivity(), getString(R.string.account_error_no_resolve), Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireActivity(),
+                getString(R.string.account_error_no_resolve),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
@@ -105,7 +148,7 @@ class AccountFragment : Fragment() {
             lifecycleScope.launch {
                 showProgress(true)
                 val auth = FakeFirebaseAuth()
-                if (auth.signOut()){
+                if (auth.signOut()) {
                     (requireActivity() as MainActivity).apply {
                         setupNavView(false)
                         launchLoginUI()
