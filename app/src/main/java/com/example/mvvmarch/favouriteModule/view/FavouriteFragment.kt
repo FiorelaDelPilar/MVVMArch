@@ -1,4 +1,4 @@
-package com.example.mvvmarch.favouriteModule
+package com.example.mvvmarch.favouriteModule.view
 
 import android.os.Bundle
 import android.view.View

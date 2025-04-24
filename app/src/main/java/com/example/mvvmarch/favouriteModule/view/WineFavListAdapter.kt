@@ -1,4 +1,4 @@
-package com.example.mvvmarch.favouriteModule
+package com.example.mvvmarch.favouriteModule.view
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_favourite"
-        android:name="com.example.mvvmarch.favouriteModule.FavouriteFragment"
+        android:name="com.example.mvvmarch.favouriteModule.view.FavouriteFragment"
         android:label="@string/favourite_title"
         tools:layout="@layout/fragment_home"/>
 
