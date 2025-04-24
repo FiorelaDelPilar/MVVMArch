@@ -1,7 +1,7 @@
 package com.example.mvvmarch.favouriteModule.view
 
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mvvmarch.BR
 import com.example.mvvmarch.homeModule.WineListAdapter
 
 /****
@@ -21,12 +21,6 @@ import com.example.mvvmarch.homeModule.WineListAdapter
 class WineFavListAdapter : WineListAdapter() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         super.onBindViewHolder(holder, position)
-        val wine = getItem(position)
-        with((holder as ViewHolder).binding) {
-            cbFavorite.apply {
-                isChecked = wine.isFavorite
-                visibility = View.VISIBLE
-            }
-        }
+        (holder as ViewHolder).binding?.setVariable(BR.isFavModule, true)
     }
 }
