@@ -3,6 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="isFavModule"
+            type="Boolean" />
+
+        <variable
+            name="wine"
+            type="com.example.mvvmarch.common.entities.Wine" />
+    </data>
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -11,10 +22,11 @@
 
         <ImageView
             android:id="@+id/imgWine"
+            glideUrl="@{wine.image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/ic_wine_bar" />
+            tools:src="@drawable/ic_wine_bar" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -23,10 +35,11 @@
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/cbFavorite"
+                setVisibility="@{isFavModule}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:button="@drawable/states_cb_favorite"
-                android:visibility="gone"
+                android:checked="@{wine.favorite}"
                 app:buttonTint="@color/red_a700"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -35,6 +48,7 @@
             <androidx.appcompat.widget.AppCompatRatingBar
                 android:id="@+id/rating"
                 style="@style/Widget.AppCompat.RatingBar.Small"
+                setRating="@{wine.rating.average}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/common_space_min"
@@ -55,6 +69,7 @@
                     android:id="@+id/tvWine"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{wine.wine}"
                     android:textAppearance="?attr/textAppearanceTitleLarge"
                     android:textColor="@color/white"
                     tools:text="Wine" />
@@ -63,6 +78,7 @@
                     android:id="@+id/tvWinery"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{wine.winery}"
                     android:textAppearance="?attr/textAppearanceBodyLarge"
                     android:textColor="@color/white"
                     tools:text="Winery" />
@@ -71,6 +87,7 @@
                     android:id="@+id/tvLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{wine.location.replace(`\n·`, ``)}"
                     android:textAppearance="?attr/textAppearanceBodyMedium"
                     android:textColor="@color/white"
                     tools:text="Location" />
