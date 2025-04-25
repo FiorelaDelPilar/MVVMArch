@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.mvvmarch.favouriteModule.viewModel.FavouriteViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -11,10 +18,13 @@
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/srlResults"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:onRefreshListener="@{()-> viewModel.getAllWines()}"
+            app:refreshing="@{viewModel.inProgess}">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
+                setVisibility="@{viewModel.wines.size() > 0}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingStart="@dimen/common_space_none"
@@ -26,6 +36,7 @@
 
         <TextView
             android:id="@+id/tvNoData"
+            setVisibility="@{viewModel.wines.size() == 0}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"

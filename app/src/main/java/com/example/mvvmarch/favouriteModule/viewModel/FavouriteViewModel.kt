@@ -8,7 +8,9 @@ import com.example.mvvmarch.R
 import com.example.mvvmarch.common.entities.Wine
 import com.example.mvvmarch.common.utils.Constants
 import com.example.mvvmarch.favouriteModule.model.FavouriteRepository
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class FavouriteViewModel(private val repository: FavouriteRepository) : ViewModel() {
     private val _inProgess = MutableLiveData<Boolean>()
@@ -20,15 +22,21 @@ class FavouriteViewModel(private val repository: FavouriteRepository) : ViewMode
     private val _wines = MutableLiveData<List<Wine>>()
     val wines: LiveData<List<Wine>> = _wines
 
-    private fun getAllWines() {
+    init {
+        getAllWines()
+    }
+
+    fun getAllWines() {
         viewModelScope.launch {
             _inProgess.value = Constants.SHOW
             try {
-                val result = repository.getAllWines()
-                if (result != null) {
-                    _wines.value = result!!
-                } else {
-                    _snackbarMsg.value = R.string.room_request_fail
+                withContext(Dispatchers.IO) {
+                    val result = repository.getAllWines()
+                    if (result != null) {
+                        _wines.postValue(result!!)
+                    } else {
+                        _snackbarMsg.postValue(R.string.room_request_fail)
+                    }
                 }
             } finally {
                 _inProgess.value = Constants.HIDE
@@ -36,16 +44,17 @@ class FavouriteViewModel(private val repository: FavouriteRepository) : ViewMode
         }
     }
 
-    private fun addWine(wine: Wine) {
+    fun addWine(wine: Wine) {
         viewModelScope.launch {
             _inProgess.value = Constants.SHOW
             try {
-                val result = repository.addWine(wine)
-                if (result != -1L) {
-                    _snackbarMsg.value = R.string.room_save_fail
-                } else {
-                    _snackbarMsg.value = R.string.room_save_success
-
+                withContext(Dispatchers.IO) {
+                    val result = repository.addWine(wine)
+                    if (result != -1L) {
+                        _snackbarMsg.postValue(R.string.room_save_success)
+                    } else {
+                        _snackbarMsg.postValue(R.string.room_save_fail)
+                    }
                 }
             } finally {
                 _inProgess.value = Constants.HIDE
@@ -53,16 +62,18 @@ class FavouriteViewModel(private val repository: FavouriteRepository) : ViewMode
         }
     }
 
-    private fun deleteWine(wine: Wine) {
+    fun deleteWine(wine: Wine) {
         viewModelScope.launch {
             _inProgess.value = Constants.SHOW
             try {
-                val result = repository.deleteWine(wine)
-                if (result == 0) {
-                    _snackbarMsg.value = R.string.room_save_fail
-                } else {
-                    _snackbarMsg.value = R.string.room_save_success
+                withContext(Dispatchers.IO) {
+                    val result = repository.deleteWine(wine)
+                    if (result == 0) {
+                        _snackbarMsg.postValue(R.string.room_save_fail)
+                    } else {
+                        _snackbarMsg.postValue(R.string.room_save_success)
 
+                    }
                 }
             } finally {
                 _inProgess.value = Constants.HIDE
