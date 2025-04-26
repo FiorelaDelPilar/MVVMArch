@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.mvvmarch.favouriteModule.viewModel.FavouriteViewModel" />
+            type="com.example.mvvmarch.common.viewModel.BaseWineViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
