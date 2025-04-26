@@ -1,4 +1,4 @@
-package com.example.mvvmarch.loginModule
+package com.example.mvvmarch.loginModule.view
 
 import android.os.Bundle
 import android.view.LayoutInflater

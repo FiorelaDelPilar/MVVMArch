@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.mvvmarch.R
-import com.example.mvvmarch.loginModule.LoginFragment
+import com.example.mvvmarch.loginModule.view.LoginFragment
 import com.example.mvvmarch.databinding.ActivityMainBinding
 
 /****
