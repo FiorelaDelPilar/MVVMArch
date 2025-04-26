@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvmarch.common.utils.Constants
 import com.example.mvvmarch.common.dataAccess.local.FakeFirebaseAuth
-import com.example.mvvmarch.mainModule.MainActivity
+import com.example.mvvmarch.mainModule.view.MainActivity
 import com.example.mvvmarch.R
 import com.example.mvvmarch.accountModule.model.AccountRepository
 import com.example.mvvmarch.accountModule.viewModel.AccountViewModel

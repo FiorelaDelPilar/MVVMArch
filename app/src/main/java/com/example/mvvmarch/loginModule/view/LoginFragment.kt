@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.mvvmarch.BR
-import com.example.mvvmarch.mainModule.MainActivity
+import com.example.mvvmarch.mainModule.view.MainActivity
 import com.example.mvvmarch.common.dataAccess.local.FakeFirebaseAuth
 import com.example.mvvmarch.databinding.FragmentLoginBinding
 import com.example.mvvmarch.loginModule.model.LoginRepository
