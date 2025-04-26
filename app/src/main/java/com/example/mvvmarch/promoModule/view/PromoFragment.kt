@@ -1,4 +1,4 @@
-package com.example.mvvmarch.promoModule
+package com.example.mvvmarch.promoModule.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
