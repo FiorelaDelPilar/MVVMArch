@@ -1,4 +1,4 @@
-package com.example.mvvmarch.updateModule
+package com.example.mvvmarch.updateModule.view
 
 import android.app.AlertDialog
 import android.app.Dialog

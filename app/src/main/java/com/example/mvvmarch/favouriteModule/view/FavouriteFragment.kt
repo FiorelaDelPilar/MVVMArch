@@ -5,7 +5,7 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mvvmarch.BR
-import com.example.mvvmarch.updateModule.UpdateDialogFragment
+import com.example.mvvmarch.updateModule.view.UpdateDialogFragment
 import com.example.mvvmarch.common.utils.Constants
 import com.example.mvvmarch.common.utils.OnClickListener
 import com.example.mvvmarch.common.entities.Wine
