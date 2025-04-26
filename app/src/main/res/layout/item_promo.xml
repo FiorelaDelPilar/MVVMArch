@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="promo"
+            type="com.example.mvvmarch.common.entities.Promo" />
+    </data>
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,10 +23,11 @@
                 android:id="@+id/imgPromo"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:contentDescription="@string/app_name"
                 app:layout_constraintDimensionRatio="16:9"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@drawable/ic_wine_bar"
-                android:contentDescription="@string/app_name"/>
+                glideUrl="@{promo.url}"/>
 
             <TextView
                 android:id="@+id/tvDescription"
@@ -29,6 +37,7 @@
                 android:layout_marginBottom="@dimen/common_space_min"
                 android:ellipsize="end"
                 android:lines="1"
+                android:text="@{promo.description}"
                 android:textAppearance="?attr/textAppearanceDisplaySmall"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/imgPromo"

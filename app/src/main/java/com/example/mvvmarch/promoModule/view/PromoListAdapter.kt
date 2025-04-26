@@ -4,11 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.example.mvvmarch.BR
 import com.example.mvvmarch.R
 import com.example.mvvmarch.common.entities.Promo
 import com.example.mvvmarch.databinding.ItemPromoBinding
@@ -38,19 +38,14 @@ class PromoListAdapter : ListAdapter<Promo, RecyclerView.ViewHolder>(PromoDiff()
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val promo = getItem(position)
-        with((holder as ViewHolder).binding) {
-            tvDescription.text = promo.description
-
-            Glide.with(context)
-                .load(promo.url)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .centerCrop()
-                .into(imgPromo)
+        with((holder as ViewHolder)) {
+            binding?.setVariable(BR.promo, promo)
+            binding?.executePendingBindings()
         }
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val binding = ItemPromoBinding.bind(view)
+        val binding = DataBindingUtil.bind<ItemPromoBinding>(view)
     }
 
     private class PromoDiff : DiffUtil.ItemCallback<Promo>() {
