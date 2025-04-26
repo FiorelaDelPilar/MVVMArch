@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.mvvmarch.updateModule.viewModel.UpdateViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -15,7 +22,8 @@
             android:gravity="center"
             android:textAppearance="?attr/textAppearanceTitleMedium"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Wine" />
+            tools:text="Wine"
+            android:text="@{viewModel.wine.wine}"/>
 
         <androidx.appcompat.widget.AppCompatRatingBar
             android:id="@+id/rating"
@@ -24,10 +32,12 @@
             android:layout_margin="@dimen/common_space_min"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvWine" />
+            app:layout_constraintTop_toBottomOf="@id/tvWine"
+            setRating="@{viewModel.wine.rating.average ?? `0.0`}"/>
 
         <include
             android:id="@+id/content_progress"
-            layout="@layout/content_progress" />
+            layout="@layout/content_progress"
+            app:inProgress="@{viewModel.inProgess}"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
