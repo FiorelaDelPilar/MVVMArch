@@ -1,4 +1,4 @@
-package com.example.mvvmarch.homeModule
+package com.example.mvvmarch.homeModule.view
 
 import android.content.Context
 import android.view.LayoutInflater

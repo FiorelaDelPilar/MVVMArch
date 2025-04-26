@@ -1,4 +1,4 @@
-package com.example.mvvmarch.homeModule
+package com.example.mvvmarch.homeModule.view
 
 import android.os.Bundle
 import android.view.View
